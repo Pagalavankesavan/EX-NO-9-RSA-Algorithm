@@ -5,7 +5,6 @@ To Implement RSA Encryption Algorithm in Cryptography
 
 ## Algorithm:
 
-
 Step 1: Design of RSA Algorithm  
 The RSA algorithm is based on the mathematical difficulty of factoring the product of two large prime numbers. It involves generating a public and private key pair, where the public key is used for encryption, and the private key is used for decryption.
 
@@ -36,13 +35,33 @@ Step 5: **Security Foundation
 The security of RSA relies on the difficulty of factoring large numbers; thus, choosing sufficiently large prime numbers for \( p \) and \( q \) is crucial for security.
 
 ## Program:
+```
+p = 17
+q = 19
 
+n = p * q
+phi = (p-1) * (q-1)
+e = 5  
+def mod_inverse(e, phi):
+    for d in range(1, phi):
+        if (d * e) % phi == 1:
+            return d
 
+d = mod_inverse(e, phi)  
+print("Public Key  (e, n):", (e, n))
+print("Private Key (d, n):", (d, n))
 
+message = 12
+print("\nOriginal Message:", message)
 
+cipher = pow(message, e, n)
+print("Encrypted Message:", cipher)
+
+decrypted = pow(cipher, d, n)
+print("Decrypted Message:", decrypted)
+```
 ## Output:
-
-
+<img width="631" height="155" alt="image" src="https://github.com/user-attachments/assets/e977525e-3ea7-4660-9239-11a9c6d1e004" />
 
 ## Result:
  The program is executed successfully.
